@@ -1,0 +1,34 @@
+
+{% extends 'todo/HomePage.html' %}
+
+{% block content %}
+<center><h1> THis is the main app</h1></center>
+{% if request.user.is_authenticated %}
+{% for task in tasks %}
+<li> 
+  <a href="{% url 'todo:detail' task.id %}">{{task.title}}</a>  
+  <span>
+    <a href="{% url 'todo:update' task.id %}">Edit</a>
+  </span>
+  <span>
+    <a href="{% url 'todo:delete' task.id %}">Delete</a>
+  </span>
+
+</li>
+
+<li>user: {{user}}</li>
+
+{% endfor %}
+<hr>
+<a href="{% url 'todo:create' %}">Create</a>
+
+<span>Count: {{ count }}</span>
+
+
+{% else %}
+
+<center><h1> U have to login in to use the app</h1></center>
+
+{% endif %}
+
+{% endblock %}

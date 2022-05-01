@@ -1,0 +1,14 @@
+
+{% extends 'todo/HomePage.html' %}
+
+    {% block content %}
+
+	    <li>{{task.description}} </li>
+        <li>{{request.user}}</li>
+        <li>{{task.date}}</li>
+        <li>{{task.complete}}</li>
+        <li>{{task.email}}</li>
+
+        <a href="{% url 'todo:app' %}">Back</a>
+    {% endblock %}
+
